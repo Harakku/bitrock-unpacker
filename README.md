@@ -34,5 +34,8 @@ Run this line and append ".exe" to the output file and you're done.
 
 For more instructions, see <https://stackoverflow.com/a/1383674>.
 
-## License
-My modifications to the original are licensed under CC0-1.0 license.
+## Modifications
+A couple parts have been commented out. For example, the line `file attributes $destDir/$fileName -permissions $mode` would throw the following error.
+```
+bad option "-permissions": must be -archive, -hidden, -longname, -readonly, -shortname, or -system
+```
