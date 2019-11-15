@@ -9,8 +9,6 @@ Windows binaries are available at the releases section.
 
 ## Build
 
-Instructions from https://stackoverflow.com/a/1383674
-
 Get some tools.
 
 * base-tcl8.5-thread-win32-x86_64.exe or base-tcl8.5-thread-win32-ix86.exe -- https://www.activestate.com/products/tcl/downloads/
@@ -22,14 +20,14 @@ Your build directory should look like this. The script has been renamed to main.
 $ tree .
 .
 ├── base-tcl8.5-thread-win32-x86_64.exe
-├── bitrock-unpack.vfs
+├── bitrock-unpacker.vfs
 │   └── main.tcl
 └── sdx.kit
 ```
 
 Run this line and append ".exe" to the output file and you're done.
 ```
-.\tclkitsh-win32.upx.exe sdx.kit wrap bitrock-unpack -runtime .\base-tcl8.5-thread-win32-x86_64.exe
+.\tclkitsh-win32.upx.exe sdx.kit wrap bitrock-unpacker -runtime .\base-tcl8.5-thread-win32-x86_64.exe
 ```
 
 For more instructions, see <https://stackoverflow.com/a/1383674>.
