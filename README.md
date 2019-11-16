@@ -15,7 +15,7 @@ Get some tools.
 * sdx.kit -- https://web.archive.org/web/20091018121941if_/http://www.equi4.com:80/pub/sk/sdx.kit
 * tclkitsh-win32.upx.exe -- https://web.archive.org/web/20161114080543if_/http://equi4.com/pub/tk/8.5.2/tclkitsh-win32.upx.exe
 
-Your build directory should look like this. The script has been renamed to main.tcl.
+Your build directory should look like this. The unpacker script has been renamed to main.tcl.
 ```
 $ tree .
 .
@@ -26,7 +26,7 @@ $ tree .
 └── tclkitsh-win32.upx.exe
 ```
 
-Run this line and append ".exe" to the output file and you're done.
+When you run this line an executable without extension is created in current directory. Append ".exe" to the file and you're done.
 ```
 .\tclkitsh-win32.upx.exe sdx.kit wrap bitrock-unpacker -runtime .\base-tcl8.5-thread-win32-x86_64.exe
 ```
