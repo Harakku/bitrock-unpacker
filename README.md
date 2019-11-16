@@ -22,7 +22,8 @@ $ tree .
 ├── base-tcl8.5-thread-win32-x86_64.exe
 ├── bitrock-unpacker.vfs
 │   └── main.tcl
-└── sdx.kit
+├── sdx.kit
+└── tclkitsh-win32.upx.exe
 ```
 
 Run this line and append ".exe" to the output file and you're done.
