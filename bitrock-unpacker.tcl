@@ -2,17 +2,16 @@
 #
 # Bitrock unpacking script
 #
-# This script must be executed using 32-bit tclkit
-#
-# Author : mickael9 <mickael9 at gmail dot com>
-#
-# Latest version can be found at:
+# Fork of a script made by mickael9 <mickael9 at gmail dot com>
 # https://gist.github.com/mickael9/0b902da7c13207d1b86e
+#
+# Added an option to only extract Metakit files, inspired by dfir-it's fork
+# https://gist.github.com/dfir-it/06f3baa4556bba6822998103db43bc74
 
 #source /usr/bin/sdx.kit
 
 if {$argc < 2} {
-    puts "Usage: $argv0 installerFile outputDirectory"
+    puts "Usage: $argv0 installerFile outputDirectory [--metakit-only]"
     exit 1
 }
 
@@ -22,7 +21,15 @@ set destDir  [lindex $argv 1]
 set installerMount /installer
 set dataMount /installerData
 
+puts "Mounting the installer as a Metakit database..."
 vfs::mk4::Mount $installerFile $installerMount -readonly
+
+if {[lindex $argv 2] == "--metakit-only"} {
+    puts "Copying files from the Metakit database to the output directory..."
+    file copy -force $installerMount $destDir
+    puts "Done"
+    exit
+}
 
 lappend auto_path $installerMount/libraries/
 package require vfs::cookfs
@@ -60,6 +67,7 @@ set manifest [read $manifestFile]
 close $manifestFile
 
 # Mount the files to $dataMount
+puts "Mounting the installer files as a Cookfs archive..."
 vfs::cookfs::Mount {*}$options $installerFile $dataMount
 
 puts "Creating directories..."
